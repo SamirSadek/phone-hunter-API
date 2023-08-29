@@ -14,6 +14,16 @@ const displayPhones = phones => {
     // clear container cards before adding new cards
 
     phoneContainer.textContent = '';
+    // display Show All Btn
+    const showAllContainer = document.getElementById('show-all-container');
+
+    if(phones.length>12){
+        showAllContainer.classList.remove('hidden')
+    }else{
+        showAllContainer.classList.add('hidden')
+    }
+
+    phones = phones.slice(0,12);
 
 
     phones.forEach(phone =>{
