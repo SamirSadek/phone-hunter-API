@@ -13,19 +13,33 @@
   </head>
   <body>
     <header>
-        <h1></h1>
+      <h1></h1>
     </header>
     <main class="container mx-auto">
-        <section class="w-3/4 mx-auto">
-            <input type="text" placeholder="Type here" id="search-field" class="input input-bordered w-full max-w-xs bg-gray-200 m-4 p-4" />
-            <button onclick="handleSearch()"   class="btn btn-neutral">Search</button>
+      <section class="w-3/4 mx-auto text-center">
+        <h2 class="text-4xl my-4">Search Your Phone</h2>
+        <input
+          type="text"
+          placeholder="Type here"
+          id="search-field"
+          class="input input-bordered w-full max-w-xs bg-gray-200 m-4 p-4"
+        />
+        <button onclick="handleSearch()" class="btn btn-neutral">Search</button>
+      </section>
 
-        </section>
-
-        <!-- search result -->
-        <section class="w-3/4 mx-auto">
-            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- <div class="card bg-gray-100 shadow-xl">
+      <!-- search result -->
+      <section class="w-3/4 mx-auto">
+        <div class="text-center my-40 hidden" id="loading-spinner">
+          <span class="loading loading-dots loading-xs"></span>
+          <span class="loading loading-dots loading-sm"></span>
+          <span class="loading loading-dots loading-md"></span>
+          <span class="loading loading-dots loading-lg"></span>
+        </div>
+        <div
+          id="phone-container"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <!-- <div class="card bg-gray-100 shadow-xl">
                     <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
                     <div class="card-body">
                       <h2 class="card-title">Shoes!</h2>
@@ -35,13 +49,11 @@
                       </div>
                     </div>
                   </div> -->
-
-            </div>
-            <div id="show-all-container" class="hidden">
-                <button class="btn btn-neutral text-center justify-center">Show ALL</button>
-
-            </div>
-        </section>
+        </div>
+        <div id="show-all-container" class="hidden text-center mt-8 mb-8">
+          <button class="btn btn-neutral justify-center">Show ALL</button>
+        </div>
+      </section>
     </main>
     <footer></footer>
     <script src="./js/phone.js"></script>
