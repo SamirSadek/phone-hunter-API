@@ -39,21 +39,30 @@
           id="phone-container"
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <!-- <div class="card bg-gray-100 shadow-xl">
-                    <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Shoes!</h2>
-                      <p>If a dog chews shoes whose shoes does he choose?</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
-                      </div>
-                    </div>
-                  </div> -->
         </div>
         <div id="show-all-container" class="hidden text-center mt-8 mb-8">
-          <button onclick="handleShowAll()" class="btn btn-neutral justify-center">Show ALL</button>
+          <button
+            onclick="handleShowAll()"
+            class="btn btn-neutral justify-center"
+          >
+            Show ALL
+          </button>
         </div>
       </section>
+
+      <!-- show details modal -->
+      <!-- Open the modal using ID.showModal() method -->
+      <dialog id="show_details_modal" class="modal">
+        <form method="dialog" class="modal-box">
+          <h3 id="phone-name" class="font-bold text-lg text-center"></h3>
+          <div class="text-center" id="show-detail-container">
+            
+          </div>
+          <div class="text-center my-8">
+          <button class="btn">Close</button>
+        </div>
+        </form>
+      </dialog>
     </main>
     <footer></footer>
     <script src="./js/phone.js"></script>

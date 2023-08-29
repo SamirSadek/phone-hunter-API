@@ -4,6 +4,7 @@ const loadPhone = async (searchText, isShowAll) => {
   );
   const data = await res.json();
   const phones = data.data;
+  //   console.log(phones);
   displayPhones(phones, isShowAll);
 };
 
@@ -22,12 +23,12 @@ const displayPhones = (phones, isShowAll) => {
   } else {
     showAllContainer.classList.add("hidden");
   }
-  console.log("is show all", isShowAll);
+  //   console.log("is show all", isShowAll);
   if (!isShowAll) {
     phones = phones.slice(0, 12);
   }
   phones.forEach((phone) => {
-    console.log(phone);
+    // console.log(phone);
     //2 create a div
     const phoneCard = document.createElement("div");
     phoneCard.classList = `card bg-gray-100 shadow-xl`;
@@ -36,10 +37,10 @@ const displayPhones = (phones, isShowAll) => {
     phoneCard.innerHTML = `
         <figure><img src="${phone.image}" alt="" /></figure>
             <div class="card-body ">
-                <h2 class="card-title">${phone.phone_name}</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <h2 class="card-title justify-center">${phone.phone_name}</h2>
+                <p class="text-center">There are many variations of passages of available, but the majority have suffered</p>
                 <div class="card-actions justify-center">
-                <button class="btn btn-primary">Show Details</button>
+                <button onclick="showDetails('${phone.slug}');show_details_modal.showModal()" class="btn btn-primary">Show Details</button>
                 </div>
             </div>`;
     // 4 append child
@@ -47,14 +48,43 @@ const displayPhones = (phones, isShowAll) => {
   });
   toggleLoadingSpinner(false);
 };
+// handle show details
+const showDetails = async (id) => {
+  //   console.log(id);
+  // load single phone data
 
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/phone/${id}`
+  );
+  const data = await res.json();
+  const phone = data.data;
+  //   console.log(data);
+  showPhoneDetails(phone);
+};
+//
+const showPhoneDetails = (phone) => {
+  console.log(phone);
+  const phoneName = document.getElementById("phone-name");
+  phoneName.innerText = phone.name;
+
+  const showDetailContainer = document.getElementById("show-detail-container");
+  showDetailContainer.innerHTML = `
+     
+     <img class="mx-auto my-8" src="${phone.image}" alt="" />
+     
+     <p><span class="font-semibold">Storage :</span>${phone.mainFeatures.storage}</p>
+  
+  `;
+  // show the modal
+  show_details_modal.showModal();
+};
 // Handle Search Button
 
 const handleSearch = (isShowAll) => {
   toggleLoadingSpinner(true);
   const searchField = document.getElementById("search-field");
   const searchText = searchField.value;
-  console.log(searchText);
+  //   console.log(searchText);
   loadPhone(searchText, isShowAll);
 };
 
